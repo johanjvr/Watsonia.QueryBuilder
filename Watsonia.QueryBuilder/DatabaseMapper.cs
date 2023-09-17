@@ -79,7 +79,7 @@ namespace Watsonia.QueryBuilder
 		/// <returns></returns>
 		public virtual string GetPrimaryKeyColumnName(Type type)
 		{
-			return "ID";
+			return "Id";
 		}
 
 		/// <summary>
@@ -104,7 +104,7 @@ namespace Watsonia.QueryBuilder
 		/// <returns></returns>
 		public virtual string GetForeignKeyColumnName(PropertyInfo property)
 		{
-			return property.Name + "ID";
+			return property.Name + "Id";
 		}
 
 		/// <summary>

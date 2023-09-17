@@ -60,24 +60,24 @@ namespace Watsonia.QueryBuilder
 		{
 			var b = new StringBuilder();
 			b.Append("(");
-			b.Append("Select ");
+			b.Append("SELECT ");
 			if (this.IsAny)
 			{
-				b.Append("Any ");
+				b.Append("ANY ");
 			}
 			if (this.IsAll)
 			{
-				b.Append("All ");
+				b.Append("ALL ");
 			}
 			if (this.IsContains)
 			{
-				b.Append("Contains ");
+				b.Append("CONTAINS ");
 				b.Append(this.ContainsItem);
-				b.Append(" In ");
+				b.Append(" IN ");
 			}
 			if (this.IsDistinct)
 			{
-				b.Append("Distinct ");
+				b.Append("DISTINCT ");
 			}
 			if (this.Limit == 1)
 			{
@@ -111,37 +111,37 @@ namespace Watsonia.QueryBuilder
 			b.AppendLine(" ");
 			if (this.Source != null)
 			{
-				b.Append("From ");
+				b.Append("FROM ");
 				b.Append(this.Source.ToString());
 				b.AppendLine(" ");
 			}
 			// TODO: Do these ever get used?
 			if (this.SourceJoins.Count > 0)
 			{
-				b.Append("Join ");
-				b.Append(string.Join(" And ", Array.ConvertAll(this.SourceJoins.ToArray(), j => j.ToString())));
+				b.Append("JOIN ");
+				b.Append(string.Join(" AND ", Array.ConvertAll(this.SourceJoins.ToArray(), j => j.ToString())));
 				b.AppendLine(" ");
 			}
 			if (this.Conditions.Count > 0)
 			{
-				b.Append("Where ");
+				b.Append("WHERE ");
 				b.Append(this.Conditions.ToString());
 				b.AppendLine(" ");
 			}
 			if (this.GroupByFields.Count > 0)
 			{
-				b.Append("Group By ");
+				b.Append("GROUP BY ");
 				b.Append(string.Join(", ", Array.ConvertAll(this.GroupByFields.ToArray(), f => f.ToString())));
 			}
 			if (this.OrderByFields.Count > 0)
 			{
-				b.Append("Order By ");
+				b.Append("ORDER BY ");
 				b.Append(string.Join(", ", Array.ConvertAll(this.OrderByFields.ToArray(), f => f.ToString())));
 			}
 			b.Append(")");
 			if (!string.IsNullOrEmpty(this.Alias))
 			{
-				b.Append(" As ");
+				b.Append(" AS ");
 				b.Append(this.Alias);
 			}
 			return b.ToString();

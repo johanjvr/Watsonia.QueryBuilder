@@ -63,39 +63,7 @@ namespace Watsonia.QueryBuilder
 					VisitSelect(select);
 					break;
 				}
-				case StatementPartType.Insert:
-				{
-					VisitInsert((InsertStatement)statement);
-					break;
-				}
-				case StatementPartType.GenericInsert:
-				{
-					var insert = (InsertStatement)((GenericStatement)statement).CreateStatement(mapper);
-					VisitInsert(insert);
-					break;
-				}
-				case StatementPartType.Update:
-				{
-					VisitUpdate((UpdateStatement)statement);
-					break;
-				}
-				case StatementPartType.GenericUpdate:
-				{
-					var update = (UpdateStatement)((GenericStatement)statement).CreateStatement(mapper);
-					VisitUpdate(update);
-					break;
-				}
-				case StatementPartType.Delete:
-				{
-					VisitDelete((DeleteStatement)statement);
-					break;
-				}
-				case StatementPartType.GenericDelete:
-				{
-					var delete = (DeleteStatement)((GenericStatement)statement).CreateStatement(mapper);
-					VisitDelete(delete);
-					break;
-				}
+
 				default:
 				{
 					// TODO:
@@ -432,116 +400,116 @@ namespace Watsonia.QueryBuilder
 		/// </summary>
 		/// <param name="update">The update statement.</param>
 		/// <exception cref="InvalidOperationException">An update statement must have at least one condition to avoid accidentally updating all data in a table</exception>
-		protected virtual void VisitUpdate(UpdateStatement update)
-		{
-			this.CommandText.Append("UPDATE ");
-			this.VisitTable(update.Target);
-			this.CommandText.Append(" SET");
-			this.AppendNewLine(Indentation.Inner);
-			if (update.SetValues != null && update.SetValues.Count > 0)
-			{
-				for (var i = 0; i < update.SetValues.Count; i++)
-				{
-					if (i > 0)
-					{
-						this.CommandText.Append(",");
-						this.AppendNewLine(Indentation.Same);
-					}
-					this.VisitColumn(update.SetValues[i].Column, ignoreTablePrefix: true);
-					this.CommandText.Append(" = ");
-					if (update.SetValues[i].Value is SelectStatement select)
-					{
-						// Special case - ensure a select statement is surrounded with brackets
-						this.VisitField(new SelectExpression(select));
-					}
-					else
-					{
-						this.VisitField(update.SetValues[i].Value);
-					}
-				}
-			}
-			this.Indent(Indentation.Outer);
-			if (update.Conditions != null && update.Conditions.Count > 0)
-			{
-				VisitConditions(update.Conditions);
-			}
-			else
-			{
-				throw new InvalidOperationException("An update statement must have at least one condition to avoid accidentally updating all data in a table");
-			}
-		}
+		//protected virtual void VisitUpdate(UpdateStatement update)
+		//{
+		//	this.CommandText.Append("UPDATE ");
+		//	this.VisitTable(update.Target);
+		//	this.CommandText.Append(" SET");
+		//	this.AppendNewLine(Indentation.Inner);
+		//	if (update.SetValues != null && update.SetValues.Count > 0)
+		//	{
+		//		for (var i = 0; i < update.SetValues.Count; i++)
+		//		{
+		//			if (i > 0)
+		//			{
+		//				this.CommandText.Append(",");
+		//				this.AppendNewLine(Indentation.Same);
+		//			}
+		//			this.VisitColumn(update.SetValues[i].Column, ignoreTablePrefix: true);
+		//			this.CommandText.Append(" = ");
+		//			if (update.SetValues[i].Value is SelectStatement select)
+		//			{
+		//				// Special case - ensure a select statement is surrounded with brackets
+		//				this.VisitField(new SelectExpression(select));
+		//			}
+		//			else
+		//			{
+		//				this.VisitField(update.SetValues[i].Value);
+		//			}
+		//		}
+		//	}
+		//	this.Indent(Indentation.Outer);
+		//	if (update.Conditions != null && update.Conditions.Count > 0)
+		//	{
+		//		VisitConditions(update.Conditions);
+		//	}
+		//	else
+		//	{
+		//		throw new InvalidOperationException("An update statement must have at least one condition to avoid accidentally updating all data in a table");
+		//	}
+		//}
 
 		/// <summary>
 		/// Visits an insert statement.
 		/// </summary>
 		/// <param name="insert">The insert statement.</param>
-		protected virtual void VisitInsert(InsertStatement insert)
-		{
-			this.CommandText.Append("INSERT INTO ");
-			this.VisitTable(insert.Target);
-			if (insert.SetValues != null && insert.SetValues.Count > 0)
-			{
-				this.CommandText.Append(" (");
-				for (var i = 0; i < insert.SetValues.Count; i++)
-				{
-					if (i > 0)
-					{
-						this.CommandText.Append(", ");
-					}
-					this.VisitColumn(insert.SetValues[i].Column);
-				}
-				this.CommandText.Append(")");
-				this.AppendNewLine(Indentation.Same);
-				this.CommandText.Append("VALUES (");
-				for (var i = 0; i < insert.SetValues.Count; i++)
-				{
-					if (i > 0)
-					{
-						this.CommandText.Append(", ");
-					}
-					this.VisitField(insert.SetValues[i].Value);
-				}
-				this.CommandText.Append(")");
-			}
-			else if (insert.TargetFields != null && insert.TargetFields.Count > 0 && insert.Source != null)
-			{
-				this.CommandText.Append(" (");
-				for (var i = 0; i < insert.TargetFields.Count; i++)
-				{
-					if (i > 0)
-					{
-						this.CommandText.Append(", ");
-					}
-					this.VisitColumn(insert.TargetFields[i]);
-				}
-				this.CommandText.Append(")");
-				this.AppendNewLine(Indentation.Same);
-				this.VisitSelect(insert.Source);
-			}
-			else
-			{
-				this.CommandText.Append(" DEFAULT VALUES");
-			}
-		}
+		//protected virtual void VisitInsert(InsertStatement insert)
+		//{
+		//	this.CommandText.Append("INSERT INTO ");
+		//	this.VisitTable(insert.Target);
+		//	if (insert.SetValues != null && insert.SetValues.Count > 0)
+		//	{
+		//		this.CommandText.Append(" (");
+		//		for (var i = 0; i < insert.SetValues.Count; i++)
+		//		{
+		//			if (i > 0)
+		//			{
+		//				this.CommandText.Append(", ");
+		//			}
+		//			this.VisitColumn(insert.SetValues[i].Column);
+		//		}
+		//		this.CommandText.Append(")");
+		//		this.AppendNewLine(Indentation.Same);
+		//		this.CommandText.Append("VALUES (");
+		//		for (var i = 0; i < insert.SetValues.Count; i++)
+		//		{
+		//			if (i > 0)
+		//			{
+		//				this.CommandText.Append(", ");
+		//			}
+		//			this.VisitField(insert.SetValues[i].Value);
+		//		}
+		//		this.CommandText.Append(")");
+		//	}
+		//	else if (insert.TargetFields != null && insert.TargetFields.Count > 0 && insert.Source != null)
+		//	{
+		//		this.CommandText.Append(" (");
+		//		for (var i = 0; i < insert.TargetFields.Count; i++)
+		//		{
+		//			if (i > 0)
+		//			{
+		//				this.CommandText.Append(", ");
+		//			}
+		//			this.VisitColumn(insert.TargetFields[i]);
+		//		}
+		//		this.CommandText.Append(")");
+		//		this.AppendNewLine(Indentation.Same);
+		//		this.VisitSelect(insert.Source);
+		//	}
+		//	else
+		//	{
+		//		this.CommandText.Append(" DEFAULT VALUES");
+		//	}
+		//}
 
 		/// <summary>
 		/// Visits a delete statement.
 		/// </summary>
 		/// <param name="delete">The delete statement.</param>
 		/// <exception cref="InvalidOperationException">A delete statement must have at least one condition to avoid accidentally deleting all data in a table</exception>
-		protected virtual void VisitDelete(DeleteStatement delete)
-		{
-			this.CommandText.Append("DELETE FROM ");
-			this.VisitTable(delete.Target);
-			if (delete.Conditions != null && delete.Conditions.Count > 0)
-			{
-				VisitConditions(delete.Conditions);
-			}
-			else
-			{
-				throw new InvalidOperationException("A delete statement must have at least one condition to avoid accidentally deleting all data in a table");
-			}
-		}
+		//protected virtual void VisitDelete(DeleteStatement delete)
+		//{
+		//	this.CommandText.Append("DELETE FROM ");
+		//	this.VisitTable(delete.Target);
+		//	if (delete.Conditions != null && delete.Conditions.Count > 0)
+		//	{
+		//		VisitConditions(delete.Conditions);
+		//	}
+		//	else
+		//	{
+		//		throw new InvalidOperationException("A delete statement must have at least one condition to avoid accidentally deleting all data in a table");
+		//	}
+		//}
 
 		/// <summary>
 		/// Visits a source fields.

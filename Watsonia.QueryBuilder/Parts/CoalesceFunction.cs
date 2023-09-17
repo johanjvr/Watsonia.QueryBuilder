@@ -58,12 +58,12 @@ namespace Watsonia.QueryBuilder
 		public override string ToString()
 		{
 			var b = new StringBuilder();
-			b.Append("Coalesce(");
+			b.Append("COALESCE(");
 			b.Append(string.Join(", ", this.Arguments.Select(a => a.ToString())));
 			b.Append(")");
 			if (!string.IsNullOrEmpty(this.Alias))
 			{
-				b.Append(" As ");
+				b.Append(" AS ");
 				b.Append(this.Alias);
 			}
 			return b.ToString();

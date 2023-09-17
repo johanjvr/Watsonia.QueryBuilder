@@ -21,7 +21,7 @@ namespace Watsonia.QueryBuilder
 		public override string ToString()
 		{
 			var b = new StringBuilder();
-			b.Append("Compare(");
+			b.Append("COMPARE(");
 			b.Append(this.Argument.ToString());
 			b.Append(", ");
 			b.Append(this.Other.ToString());

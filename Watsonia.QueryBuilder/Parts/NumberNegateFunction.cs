@@ -17,7 +17,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return "Negate(" + this.Argument.ToString() + ")";
+			return "NEGATE(" + this.Argument.ToString() + ")";
 		}
 	}
 }

@@ -33,11 +33,11 @@ namespace Watsonia.QueryBuilder
 		{
 			if (this.Hour != null || this.Minute != null || this.Second != null)
 			{
-				return "DateNew(" + this.Year.ToString() + ", " + this.Month.ToString() + ", " + this.Day.ToString() + ", " + this.Hour.ToString() + ", " + this.Minute.ToString() + ", " + this.Second.ToString() + ")";
+				return "DATENEW(" + this.Year.ToString() + ", " + this.Month.ToString() + ", " + this.Day.ToString() + ", " + this.Hour.ToString() + ", " + this.Minute.ToString() + ", " + this.Second.ToString() + ")";
 			}
 			else
 			{
-				return "DateNew(" + this.Year.ToString() + ", " + this.Month.ToString() + ", " + this.Day.ToString() + ")";
+				return "DATENEW(" + this.Year.ToString() + ", " + this.Month.ToString() + ", " + this.Day.ToString() + ")";
 			}
 		}
 	}

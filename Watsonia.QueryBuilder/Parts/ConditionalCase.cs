@@ -25,30 +25,30 @@ namespace Watsonia.QueryBuilder
 			var b = new StringBuilder();
 			if (this.Test is Condition)
 			{
-				b.Append("(Case When ");
+				b.Append("(CASE WHEN ");
 				b.Append(this.Test.ToString());
-				b.Append(" Then ");
+				b.Append(" THEN ");
 				b.Append(this.IfTrue.ToString());
 				var ifFalse = this.IfFalse;
 				while (ifFalse is ConditionalCase ifFalseCase)
 				{
-					b.Append(" When ");
+					b.Append(" WHEN ");
 					b.Append(ifFalseCase.Test.ToString());
-					b.Append(" Then ");
+					b.Append(" THEN ");
 					b.Append(ifFalseCase.IfTrue.ToString());
 					ifFalse = ifFalseCase.IfFalse;
 				}
-				b.Append(" Else ");
+				b.Append(" ELSE ");
 				b.Append(ifFalse.ToString());
 				b.Append(")");
 			}
 			else
 			{
-				b.Append("(Case ");
+				b.Append("(CASE ");
 				b.Append(this.Test.ToString());
-				b.Append(" When True Then ");
+				b.Append(" WHEN True THEN ");
 				b.Append(this.IfTrue.ToString());
-				b.Append(" Else ");
+				b.Append(" ELSE ");
 				b.Append(this.IfFalse.ToString());
 				b.Append(")");
 			}

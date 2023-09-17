@@ -17,7 +17,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return "ToLower(" + this.Argument.ToString() + ")";
+			return "TOLOWER(" + this.Argument.ToString() + ")";
 		}
 	}
 }

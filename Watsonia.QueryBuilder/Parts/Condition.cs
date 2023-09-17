@@ -118,7 +118,7 @@ namespace Watsonia.QueryBuilder
 			var b = new StringBuilder();
 			if (this.Not)
 			{
-				b.Append("Not ");
+				b.Append("NOT ");
 			}
 			b.Append(this.Field.ToString());
 			b.Append(" ");
@@ -126,7 +126,7 @@ namespace Watsonia.QueryBuilder
 			b.Append(" ");
             if (this.Value == null)
             {
-                b.Append("Null");
+                b.Append("NULL");
             }
             else
             {

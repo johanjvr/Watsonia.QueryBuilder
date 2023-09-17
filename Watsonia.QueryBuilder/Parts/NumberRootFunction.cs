@@ -19,7 +19,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return "Root(" + this.Argument.ToString() + ", " + this.Root.ToString() + ")";
+			return "ROOT(" + this.Argument.ToString() + ", " + this.Root.ToString() + ")";
 		}
 	}
 }

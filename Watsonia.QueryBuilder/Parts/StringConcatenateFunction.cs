@@ -18,7 +18,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return "Concat(" + string.Join(", ", this.Arguments.Select(a => a.ToString())) + ")";
+			return "CONCAT(" + string.Join(", ", this.Arguments.Select(a => a.ToString())) + ")";
 		}
 	}
 }

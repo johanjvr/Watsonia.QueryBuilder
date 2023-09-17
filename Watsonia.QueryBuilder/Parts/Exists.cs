@@ -19,11 +19,11 @@ namespace Watsonia.QueryBuilder
 		{
 			if (this.Not)
 			{
-				return "Not Exists " + this.Select.ToString();
+				return "NOT EXISTS " + this.Select.ToString();
 			}
 			else
 			{
-				return "Exists " + this.Select.ToString();
+				return "EXISTS " + this.Select.ToString();
 			}
 		}
 	}

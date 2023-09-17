@@ -19,7 +19,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return "Round(" + this.Argument.ToString() + ", " + this.Precision + ")";
+			return "ROUND(" + this.Argument.ToString() + ", " + this.Precision + ")";
 		}
 	}
 }

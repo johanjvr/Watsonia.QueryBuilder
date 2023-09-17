@@ -17,7 +17,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return "Exponential(" + this.Argument.ToString() + ")";
+			return "EXPONENTIAL(" + this.Argument.ToString() + ")";
 		}
 	}
 }

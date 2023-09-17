@@ -21,7 +21,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return "Remove(" + this.Argument.ToString() + ", " + this.StartIndex.ToString() + ", " + this.Length.ToString() + ")";
+			return "REMOVE(" + this.Argument.ToString() + ", " + this.StartIndex.ToString() + ", " + this.Length.ToString() + ")";
 		}
 	}
 }

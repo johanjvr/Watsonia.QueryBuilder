@@ -75,7 +75,7 @@ namespace Watsonia.QueryBuilder
 		/// </returns>
 		public override string ToString()
 		{
-			return this.Name + (!string.IsNullOrEmpty(this.Alias) ? " As " + this.Alias : "");
+			return this.Name + (!string.IsNullOrEmpty(this.Alias) ? " AS " + this.Alias : "");
 		}
 	}
 }

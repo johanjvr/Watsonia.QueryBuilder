@@ -89,7 +89,7 @@ namespace Watsonia.QueryBuilder
 			b.Append(this.Name);
 			if (!string.IsNullOrEmpty(this.Alias))
 			{
-				b.Append(" As ");
+				b.Append(" AS ");
 				b.Append(this.Alias);
 			}
 			return b.ToString();

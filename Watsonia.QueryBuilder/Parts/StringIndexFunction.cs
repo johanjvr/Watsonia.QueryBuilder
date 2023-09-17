@@ -23,7 +23,7 @@ namespace Watsonia.QueryBuilder
 		public override string ToString()
 		{
 			var b = new StringBuilder();
-			b.Append("IndexOf(");
+			b.Append("INDEXOF(");
 			b.Append(this.Argument.ToString());
 			b.Append(", ");
 			b.Append(this.StringToFind.ToString());

@@ -20,12 +20,12 @@ namespace Watsonia.QueryBuilder
 		public override string ToString()
 		{
 			var b = new StringBuilder();
-			b.Append("(Case When ");
+			b.Append("(CASE WHEN ");
 			b.Append(this.Predicate.ToString());
-			b.Append(" Then True Else False)");
+			b.Append(" THEN True ELSE False)");
 			if (!string.IsNullOrEmpty(this.Alias))
 			{
-				b.Append(" As ");
+				b.Append(" AS ");
 				b.Append(this.Alias);
 			}
 			return b.ToString();

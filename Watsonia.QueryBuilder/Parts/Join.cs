@@ -76,11 +76,11 @@ namespace Watsonia.QueryBuilder
 		{
 			var b = new StringBuilder();
 			b.Append(this.JoinType.ToString());
-			b.Append(" Join ");
+			b.Append(" JOIN ");
 			b.Append(this.Table.ToString());
 			if (this.Conditions.Count > 0)
 			{
-				b.Append(" On ");
+				b.Append(" ON ");
 				b.Append(this.Conditions.ToString());
 			}
 			return b.ToString();

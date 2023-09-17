@@ -23,7 +23,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return "RowNumber";
+			return "ROWNUMBER";
 		}
 	}
 }

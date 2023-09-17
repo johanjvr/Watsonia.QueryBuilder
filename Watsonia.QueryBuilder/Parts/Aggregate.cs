@@ -79,7 +79,7 @@ namespace Watsonia.QueryBuilder
 			b.Append("(");
 			if (this.IsDistinct)
 			{
-				b.Append("Distinct ");
+				b.Append("DISTINCT ");
 			}
 			if (this.Field != null)
 			{
@@ -87,12 +87,12 @@ namespace Watsonia.QueryBuilder
 			}
 			else
 			{
-				b.Append("All");
+				b.Append("ALL");
 			}
 			b.Append(")");
 			if (!string.IsNullOrEmpty(this.Alias))
 			{
-				b.Append(" As ");
+				b.Append(" AS ");
 				b.Append(this.Alias);
 			}
 			return b.ToString();

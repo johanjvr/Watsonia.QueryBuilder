@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 
 namespace Watsonia.QueryBuilder
@@ -24,7 +24,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return $"DatePart({this.DatePart}, {this.Argument})";
+			return $"DATEPART({this.DatePart}, {this.Argument})";
 		}
 	}
 }

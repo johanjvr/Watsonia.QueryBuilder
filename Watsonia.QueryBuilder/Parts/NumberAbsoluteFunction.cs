@@ -17,7 +17,7 @@ namespace Watsonia.QueryBuilder
 
 		public override string ToString()
 		{
-			return "Absolute(" + this.Argument.ToString() + ")";
+			return "ABSOLUTE(" + this.Argument.ToString() + ")";
 		}
 	}
 }

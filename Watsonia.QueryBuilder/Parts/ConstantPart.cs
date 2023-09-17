@@ -53,7 +53,7 @@ namespace Watsonia.QueryBuilder
 			var b = new StringBuilder();
 			if (this.Value == null)
 			{
-				b.Append("Null");
+				b.Append("NULL");
 			}
 			else if (this.Value is string || this.Value is char || this.Value is DateTime)
 			{
@@ -69,7 +69,7 @@ namespace Watsonia.QueryBuilder
 				{
 					if (o == null)
 					{
-						values.Add("Null");
+						values.Add("NULL");
 					}
                     else if (o is string || o is char || o is DateTime)
                     {
@@ -89,7 +89,7 @@ namespace Watsonia.QueryBuilder
 			}
 			if (!string.IsNullOrEmpty(this.Alias))
 			{
-				b.Append(" As ");
+				b.Append(" AS ");
 				b.Append(this.Alias);
 			}
 			return b.ToString();
